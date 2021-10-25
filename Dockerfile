@@ -1,6 +1,9 @@
 # Use an official Python runtime based on Debian 10 "buster" as a parent image.
 FROM python:3.8.1-slim-buster
 
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
 # Add user that will be used in the container.
 RUN useradd wagtail
 
@@ -19,10 +22,12 @@ RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-r
     build-essential \
     libpq-dev \
     libmariadbclient-dev \
+    apt-get install -y nodejs &&\
     libjpeg62-turbo-dev \
     zlib1g-dev \
     libwebp-dev \
  && rm -rf /var/lib/apt/lists/*
+
 
 # Install the application server.
 RUN pip install "gunicorn==20.0.4"

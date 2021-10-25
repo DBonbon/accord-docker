@@ -120,6 +120,12 @@ WSGI_APPLICATION = 'wagtail_bootstrap_blog.wsgi.application'
 #    }
 #}
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -203,3 +209,6 @@ WEBPACK_LOADER = {
 SITE_ID = 1
 
 COMMENTS_APP = 'custom_comments'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
