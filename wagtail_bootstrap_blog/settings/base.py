@@ -109,16 +109,16 @@ WSGI_APPLICATION = 'wagtail_bootstrap_blog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
-        "NAME": os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
-        "USER": os.environ.get("SQL_USER", "user"),
-        "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
-        "HOST": os.environ.get("SQL_HOST", "localhost"),
-        "PORT": os.environ.get("SQL_PORT", "5432"),
-    }
-}
+#DATABASES = {
+#    "default": {
+#        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
+#        "NAME": os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
+#        "USER": os.environ.get("SQL_USER", "user"),
+#        "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+#        "HOST": os.environ.get("SQL_HOST", "localhost"),
+#        "PORT": os.environ.get("SQL_PORT", "5432"),
+#    }
+#}
 
 
 # Password validation
@@ -162,10 +162,10 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
-STATICFILES_DIRS = [
-    os.path.join(PROJECT_DIR, 'static'),
-    os.path.join(BASE_DIR, 'frontend/build'),
-]
+#STATICFILES_DIRS = [
+#    os.path.join(PROJECT_DIR, 'static'),
+#    os.path.join(BASE_DIR, 'frontend/build'),
+#]
 
 # ManifestStaticFilesStorage is recommended in production, to prevent outdated
 # JavaScript / CSS assets being served from cache (e.g. after a Wagtail upgrade).
