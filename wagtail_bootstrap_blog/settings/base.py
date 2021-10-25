@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'webpack_loader',
     'django_comments',
     'custom_comments.apps.CustomCommentsConfig',
+    'storages',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -75,6 +76,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
