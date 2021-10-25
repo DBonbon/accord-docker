@@ -17,4 +17,4 @@ whitenoise
 boto3
 django-storages
 dj-database-url
-
+django-toolbelt

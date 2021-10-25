@@ -1,9 +1,15 @@
+from __future__ import absolute_import, unicode_literals
 from .base import *
 import dj_database_url
 
 DEBUG = int(os.environ.get("DEBUG", default=1))
 SECRET_KEY = os.environ.get("SECRET_KEY")
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+
+DATABASES['default'] =  dj_database_url.config()
+    
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # DO NOT use on production, test key is available in the URL below
 # https://developers.google.com/recaptcha/docs/faq
@@ -13,9 +19,12 @@ NOCAPTCHA = True
 SILENCED_SYSTEM_CHECKS = ["captcha.recaptcha_test_key_error"]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-if "DATABASE_URL" in env:
-    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+COMPRESS_OFFLINE = True
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.CSSMinFilter',
+]
+COMPRESS_CSS_HASHING_METHOD = 'content'
 
 
 try:
